@@ -1,0 +1,35 @@
+.entryCard {
+    border: 1px solid black;
+    width: 40%;
+    padding: 2rem;
+}
+
+.userAndDate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentsAndEmoji {
+    display: flex;
+    justify-content: space-between;
+}
+
+.emoji {
+    display: flex;
+}
+
+.emoji p {
+    margin: 5px;
+}
+
+/* FORM ------------------------------------------------------- */
+.entryForm {
+    border: 1px solid black;
+    width: 40%;
+    padding: 2rem;
+}
+
+.entryForm iframe {
+    border: 1px solid black;
+    width: 30%;
+}
