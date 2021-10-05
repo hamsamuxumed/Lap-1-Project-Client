@@ -28,3 +28,8 @@ postsSection.addEventListener('click', (event)=>{
         }
     }
 })
+
+window.addEventListener('load', ()=> {
+    console.log('page is fully loaded')
+})
+
