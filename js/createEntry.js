@@ -51,12 +51,12 @@ const createEntry = async (data) => {
         newLoveP = classList.add('love')
         newAngryP = classList.add('angry')
         newCommentsDiv.append(newButton)
-        newHappySpan.append('&#128512;') 
-        newLoveSpan.append('&#10084;&#65039;') 
-        newAngrySpan.append('&#128545;')
-        newHappyP.append(newHappySpan)
-        newLoveP.append(newLoveSpan)
-        newAngryP.append(newAngrySpan)
+        // newHappySpan.innerHtml = (&#128512;) 
+        // newLoveSpan.append(&#10084;&#65039) 
+        // newAngrySpan.append(&#128545;)
+        newHappyP.innerHTML = <span>&#128512;</span>
+        newLoveP.innerHTML = <span>&#10084;&#65039;</span>
+        newAngryP.innerHTML = <span>&#128545;</span>
         newEmojiDiv.append(newHappyP)
         newEmojiDiv.append(newLoveP)
         newEmojiDiv.append(newAngryP)
