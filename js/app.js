@@ -13,6 +13,8 @@ search.addEventListener('change', async (event) => {
     const selectors = document.querySelector('#gifSelectorSection')
     gifs.classList.remove('noDisplay');
     selectors.classList.remove('noDisplay');
+
+    //might need to change the name of each selector to the url of the releated gif
 });
 
 
@@ -57,7 +59,7 @@ window.addEventListener('load', async (e) => {
         const newIframe = document.createElement('iframe')
         newSection.classList.add('gif')
         newIframe.classList.add('giphy-embed')
-        newIframe.src = entry.gif
+        newIframe.src = entry.gifUrl
         newIframe.width = "480"
         newIframe.height = "331"
         newIframe.border = "0"
@@ -83,11 +85,12 @@ window.addEventListener('load', async (e) => {
         newButton.append('comments section')
         newCommentsDiv.append(newButton)
         newHappySpan.append('&#128512;') 
-        newLoveSpan.append('&#10084;&#65039;') 
-        newAngrySpan.append('&#128545;')
-        newHappyP.append(newHappySpan)
-        newLoveP.append(newLoveSpan)
-        newAngryP.append(newAngrySpan)
+        // newHappySpan.innerHtml = (&#128512;) 
+        // newLoveSpan.append(&#10084;&#65039) 
+        // newAngrySpan.append(&#128545;)
+        newHappyP.innerHTML = '<span>&#128512;</span>'
+        newLoveP.innerHTML = '<span>&#10084;&#65039;</span>'
+        newAngryP.innerHTML = '<span>&#128545;</span>'
         newEmojiDiv.append(newHappyP)
         newEmojiDiv.append(newLoveP)
         newEmojiDiv.append(newAngryP)
