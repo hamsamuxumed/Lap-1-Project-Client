@@ -10,11 +10,12 @@ search.addEventListener('change', async (event) => {
     const iframe1 = document.createElement('IFRAME');
     const iframe2 = document.createElement('IFRAME');
     const iframe3 = document.createElement('IFRAME');
-    iframe1.src = res.data.data[0].images.original.url;
-    iframe2.src = res.data.data[1].images.original.url;
-    iframe3.src = res.data.data[2].images.original.url;
+    iframe1.src = res.data.data[0].embed_url;
+    iframe2.src = res.data.data[1].embed_url;
+    iframe3.src = res.data.data[2].embed_url;
     document.querySelector('.gifSearch').append(iframe1);
     document.querySelector('.gifSearch').append(iframe2);
     document.querySelector('.gifSearch').append(iframe3);
+    // add a form with radial buttons and then change its display property when a gif search is made
 });
 
