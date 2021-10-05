@@ -13,29 +13,28 @@
 
 </head>
 <body>
-    <article class="entryForm">
-        <h2>Create new post</h2>
-        <form action="">
-            <textarea name="title" id="title" placeholder="Title" cols="60" rows="5"></textarea>
-            <textarea name="message" id="message" placeholder="Message" cols="60" rows="10"></textarea>
-            <textarea id="search" placeholder="Search for GIF" cols="30" rows="1"></textarea>
-            <div id="gifSearch" class="noDisplay">
-                <iframe id="gif1" class="gifIframe" src="" frameborder="0" scrolling="no"></iframe>
-                <iframe id="gif2" class="gifIframe" src="" frameborder="0" scrolling="no"></iframe>
-                <iframe id="gif3" class="gifIframe" src="" frameborder="0" scrolling="no"></iframe>
-            </div>
-            <div id="gifSelectorSection" class="noDisplay">
-                <input type="radio" name="gif" class="gifSelector">
-                <input type="radio" name="gif" class="gifSelector">
-                <input type="radio" name="gif" class="gifSelector">
-            </div>
-            <button>Post</button>
-        </form>
-    </article>
+    <main>
+        <article class="entryForm">
+            <h2>Create new post</h2>
+            <form action="">
+                <textarea name="formTitle" id="formTitle" placeholder="Title" cols="60" rows="5"></textarea>
+                <textarea name="formMessage" id="formMessage" placeholder="Message" cols="60" rows="10"></textarea>
+                <textarea id="formGifSearch" placeholder="Search for GIF" cols="30" rows="1"></textarea>
+                <div id="formGifSection" class="noDisplay">
+                    <iframe id="gif1" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
+                    <iframe id="gif2" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
+                    <iframe id="gif3" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div id="gifSelectorSection" class="noDisplay">
+                    <input type="radio" name="gif" class="gifSelector">
+                    <input type="radio" name="gif" class="gifSelector">
+                    <input type="radio" name="gif" class="gifSelector">
+                </div>
+                <button>Post</button>
+            </form>
+        </article>
 
-
-
-    <article class="entryCard">
+      <article class="entryCard">
         <header class="userAndDate">
             <p class="username"><a href="goes to page of just entries from that author"></a>BBC News (UK)</p>
             <p class="date">Oct 04, 2021</p>

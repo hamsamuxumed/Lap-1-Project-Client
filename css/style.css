@@ -10,21 +10,21 @@
     padding: 2rem;
 }
 
-.userAndDate {
+.entryHeader {
     display: flex;
     justify-content: space-between;
 }
 
-.commentsAndEmoji {
+.entryFooter {
     display: flex;
     justify-content: space-between;
 }
 
-.emoji {
+.entryEmojiSection {
     display: flex;
 }
 
-.emoji p {
+.entryEmojiSection p {
     margin: 5px;
 }
 /* Comments ------------------------------------------------------- */
