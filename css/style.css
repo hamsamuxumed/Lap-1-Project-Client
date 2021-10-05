@@ -1,3 +1,9 @@
+.noDisplay {
+    display: none;
+}
+
+/* Entries ------------------------------------------------------- */
+
 .entryCard {
     border: 1px solid black;
     width: 40%;
@@ -21,6 +27,11 @@
 .emoji p {
     margin: 5px;
 }
+/* Comments ------------------------------------------------------- */
+.comment {
+    border: 1px solid black
+}
+
 
 /* FORM ------------------------------------------------------- */
 .entryForm {
