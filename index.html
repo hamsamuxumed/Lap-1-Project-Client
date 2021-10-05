@@ -19,10 +19,15 @@
             <textarea name="title" id="title" placeholder="Title" cols="60" rows="5"></textarea>
             <textarea name="message" id="message" placeholder="Message" cols="60" rows="10"></textarea>
             <textarea id="search" placeholder="Search for GIF" cols="30" rows="1"></textarea>
-            <div class="gifSearch">
-                <iframe id="gif1" src="" frameborder="0"></iframe>
-                <iframe id="gif2" src="" frameborder="0"></iframe>
-                <iframe id="gif3" src="" frameborder="0"></iframe>
+            <div id="gifSearch" class="noDisplay">
+                <iframe id="gif1" src="" frameborder="0" scrolling="no"></iframe>
+                <iframe id="gif2" src="" frameborder="0" scrolling="no"></iframe>
+                <iframe id="gif3" src="" frameborder="0" scrolling="no"></iframe>
+            </div>
+            <div id="gifSelectorSection" class="noDisplay">
+                <input type="radio" name="gif" class="gifSelector">
+                <input type="radio" name="gif" class="gifSelector">
+                <input type="radio" name="gif" class="gifSelector">
             </div>
             <button>Post</button>
         </form>
@@ -38,7 +43,7 @@
         <h2>Six arrested on suspicion of poaching in Wiltshire</h2>
         <p>Police are called to the Devizes area and find animal remains, two catapults and a big hunting lamp.</p>
         <section class="gif">
-            <iframe src="https://giphy.com/embed/3oKIPlpftSI37ei5QA" width="480" height="331" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            <iframe src="https://giphy.com/embed/3oKIPlpftSI37ei5QA" width="480" height="331" frameBorder="0" class="giphy-embed" allowFullScreen scrolling="no"></iframe>
         </section>
         <footer class="commentsAndEmoji">
             <div class="comments"> 
