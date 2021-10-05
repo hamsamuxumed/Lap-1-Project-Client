@@ -16,19 +16,15 @@ search.addEventListener('change', async (event) => {
 });
 
 
-// const commentsSection = document.querySelector('.commentsSection');
-// const commentsButton = document.querySelector('.commentSectionButton')
-// commentsButton.addEventListener('click', () => {
-//     commentsSection.classList.toggle("noDisplay");
-// })
-
 const postsSection = document.querySelector('main')
 postsSection.addEventListener('click', (event)=>{
     console.dir(event);
     if (event.target.nodeName === 'BUTTON'){
-        if (event.target.classList.contains('commentsSectionButton')){
+        if (event.target.classList.contains('commentSectionButton')){
             const commentsSection = document.querySelector('.commentsSection');
             commentsSection.classList.toggle("noDisplay");
+        } else if (event.target.classList.contains()){
+            // next function here
         }
     }
 })
