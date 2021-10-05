@@ -17,8 +17,8 @@ search.addEventListener('change', async (event) => {
 
 //we are going to have issues getting this working on new posts 
 //need to find way of getting this to work on each comment section
-const commentsSection = document.querySelector('#commentSection');
-const commentsButton = document.querySelector('#commentSectionButton')
+const commentsSection = document.querySelector('.commentsSection');
+const commentsButton = document.querySelector('.commentSectionButton')
 commentsButton.addEventListener('click', () => {
     commentsSection.classList.toggle("noDisplay");
 })
