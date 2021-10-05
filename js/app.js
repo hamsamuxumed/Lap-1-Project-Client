@@ -5,15 +5,10 @@ search.addEventListener('change', async (event) => {
     const searchTerm = event.srcElement.value;
     console.log(searchTerm);
     const res = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=L8NZ2ooXz2otBXVDkffxMXzUVYL7AuQ3&limit=3&q=${searchTerm}`);
-    console.log(res.data.data[0].images.original.url)
-    console.log(res.data.data);
-    const iframe1 = document.querySelector('#gif1');
-    const iframe2 = document.querySelector('#gif2');
-    const iframe3 = document.querySelector('#gif3');
-    iframe1.src = res.data.data[0].embed_url;
-    iframe2.src = res.data.data[1].embed_url;
-    iframe3.src = res.data.data[2].embed_url;
-
+    const iframes = document.querySelectorAll('.gifIframe');
+    for (let [index, frame] of iframes.entries()) {
+        frame.src = res.data.data[index].embed_url;
+    } 
     const gifs = document.querySelector('#gifSearch')
     const selectors = document.querySelector('#gifSelectorSection')
     gifs.classList.remove('noDisplay');
