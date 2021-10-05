@@ -27,6 +27,9 @@ const postsSection = document.querySelector('main')
 postsSection.addEventListener('click', (event)=>{
     console.dir(event);
     if (event.target.nodeName === 'BUTTON'){
-
+        if (event.target.classList.contains('commentsSectionButton')){
+            const commentsSection = document.querySelector('.commentsSection');
+            commentsSection.classList.toggle("noDisplay");
+        }
     }
 })
