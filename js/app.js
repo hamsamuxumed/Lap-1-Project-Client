@@ -1,25 +1,23 @@
 // L8NZ2ooXz2otBXVDkffxMXzUVYL7AuQ3 this is our giphy API key
 
-const search = document.querySelector('#formGifSearch');
-search.addEventListener('change', async (event) => {
-    const searchTerm = event.srcElement.value;
+const search = document.querySelector('#searchButton');
+search.addEventListener('click', async (event) => {
+    event.preventDefault()
+    console.log(event)
+    const searchTerm = event.target.parentElement.childNodes[3].value;
     console.log(searchTerm);
     const res = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=L8NZ2ooXz2otBXVDkffxMXzUVYL7AuQ3&limit=3&q=${searchTerm}`);
     const iframes = document.querySelectorAll('.formGif');
     for (let [index, frame] of iframes.entries()) {
         frame.src = res.data.data[index].embed_url;
     } 
-    const gifs = document.querySelector('#formGifSection')
-    const selectors = document.querySelector('#gifSelectorSection')
+    const gifs = document.querySelector('#gifSection')
     gifs.classList.remove('noDisplay');
-    selectors.classList.remove('noDisplay');
-
-    //might need to change the name of each selector to the url of the releated gif
 });
 
 
 const postsSection = document.querySelector('main')
-postsSection.addEventListener('click', (event)=>{
+postsSection.addEventListener('click', async (event)=>{
     console.dir(event);
     if (event.target.nodeName === 'BUTTON'){
         if (event.target.classList.contains('commentSectionButton')){
@@ -30,9 +28,32 @@ postsSection.addEventListener('click', (event)=>{
             } catch {
                 console.log('there are no comments to display')
             }
-            
-        // } else if (event.target.classList.contains()){
-        //     // next function here
+        } 
+    } else if (event.target.classList.contains('emoji')){
+        const emojiID = event.target.parentElement.id
+        const emojiType = event.target.parentElement.className 
+        const id = emojiID.split('')
+        const idNum = id[id.length - 1]
+        console.log(id[id.length - 1])
+        const happy = document.querySelector(`#happy-id${idNum}`)
+        const love = document.querySelector(`#love-id${idNum}`)
+        const angry = document.querySelector(`#angry-id${idNum}`)
+        const data = await axios.get(`https://caffeine-overflow-server.herokuapp.com/entries`);
+        const dataArray = data.data
+        const dataOfId = (dataArray[idNum-1])
+
+        if (emojiType === 'happy') {
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${dataOfId.reactions.happy + 1}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${dataOfId.reactions.love}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${dataOfId.reactions.angry}`
+        } else if (emojiType === 'love') {
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${dataOfId.reactions.happy}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${dataOfId.reactions.love + 1}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${dataOfId.reactions.angry}`
+        } else if (emojiType === 'angry') {
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${dataOfId.reactions.happy}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${dataOfId.reactions.love}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${dataOfId.reactions.angry + 1}`
         }
     }
 })
@@ -40,7 +61,6 @@ postsSection.addEventListener('click', (event)=>{
 window.addEventListener('load', async (e) => {
     const data = await axios.get(`https://caffeine-overflow-server.herokuapp.com/entries`);
     const dataObject = data.data
-    console.log(dataObject)
     const main = document.querySelector('main')
     for (let entry of dataObject){
         const newArticle = createNewEntry(entry)
@@ -85,9 +105,6 @@ const createNewEntry = (entry) => {
     const newHappyP = document.createElement('p')
     const newLoveP = document.createElement('p')
     const newAngryP = document.createElement('p')
-    const newHappySpan = document.createElement('span')
-    const newLoveSpan = document.createElement('span')
-    const newAngrySpan = document.createElement('span')
     newFooter.classList.add('entryFooter')
     newCommentsDiv.classList.add('comments')
     newButton.classList.add('commentSectionButton')
@@ -96,12 +113,14 @@ const createNewEntry = (entry) => {
     newHappyP.classList.add('happy')
     newLoveP.classList.add('love')
     newAngryP.classList.add('angry')
+    newHappyP.id = `happy-id${entry.id}`
+    newLoveP.id = `love-id${entry.id}`
+    newAngryP.id = `angry-id${entry.id}`
     newButton.append('comments section')
     newCommentsDiv.append(newButton)
-    newHappySpan.append('&#128512;') 
-    newHappyP.innerHTML = `<span>&#128512;</span> ${entry.reactions.happy}`
-    newLoveP.innerHTML = `<span>&#10084;&#65039;</span> ${entry.reactions.love}`
-    newAngryP.innerHTML = `<span>&#128545;</span> ${entry.reactions.angry}`
+    newHappyP.innerHTML = `<span class="emoji">&#128512;</span>${entry.reactions.happy}`
+    newLoveP.innerHTML = `<span class="emoji">&#10084;&#65039;</span>${entry.reactions.love}`
+    newAngryP.innerHTML = `<span class="emoji">&#128545;</span>${entry.reactions.angry}`
     newEmojiDiv.append(newHappyP)
     newEmojiDiv.append(newLoveP)
     newEmojiDiv.append(newAngryP)
