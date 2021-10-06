@@ -117,8 +117,13 @@ const createNewEntry = (entry) => {
     newArticle.append(newSection)
     newArticle.append(newFooter)
 
-    //creating comments form
+    //creating comments section
     const newCommentsSection = document.createElement('section');
+    newCommentsSection.classList.add('commentsSection');
+    newCommentsSection.classList.add('noDisplay');
+    newCommentsSection.id = `commentsSection-id${entry.id}`;
+
+    //creating comments form within comments section
     const newCommentsForm = document.createElement('form');
     const newTextInput = document.createElement('input')
     const newSubmitInput = document.createElement('input')
@@ -142,9 +147,7 @@ const createNewEntry = (entry) => {
         const newCommentsArticle = document.createElement('article');
         const newAuthor = document.createElement('h3');
         const newText = document.createElement('p');
-        newCommentsSection.classList.add('commentsSection');
-        newCommentsSection.classList.add('noDisplay');
-        newCommentsSection.id = `commentsSection-id${entry.id}`;
+        
         newCommentsArticle.classList.add('comment');
         newAuthor.classList.add('commentAuthor');
         newText.classList.add('commentText');
