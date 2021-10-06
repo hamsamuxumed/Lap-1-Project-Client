@@ -117,7 +117,24 @@ const createNewEntry = (entry) => {
     newArticle.append(newSection)
     newArticle.append(newFooter)
 
+    //creating comments form
     const newCommentsSection = document.createElement('section');
+    const newCommentsForm = document.createElement('form');
+    const newTextInput = document.createElement('input')
+    const newSubmitInput = document.createElement('input')
+    newCommentsForm.action = ''
+    newTextInput.type = 'text'
+    newTextInput.placeholder = 'Add comment here'
+    newTextInput.id = `textInput-id${entry.id}`
+    newTextInput.name = `textInput-id${entry.id}`
+    newSubmitInput.type = 'submit'
+    newSubmitInput.value = 'Add'
+    newSubmitInput.id = `submitInput-id${entry.id}`
+    newSubmitInput.name = `submitInput-id${entry.id}`
+    newCommentsForm.append(newTextInput)
+    newCommentsForm.append(newSubmitInput)
+    newCommentsSection.append(newCommentsForm)
+
     newArticle.append(newCommentsSection)
 
     //create comments section
