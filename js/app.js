@@ -85,34 +85,14 @@ window.addEventListener('load', async (e) => {
         newButton.append('comments section')
         newCommentsDiv.append(newButton)
         newHappySpan.append('&#128512;') 
-        // newHappySpan.innerHtml = (&#128512;) 
-        // newLoveSpan.append(&#10084;&#65039) 
-        // newAngrySpan.append(&#128545;)
-        newHappyP.innerHTML = '<span>&#128512;</span>'
-        newLoveP.innerHTML = '<span>&#10084;&#65039;</span>'
-        newAngryP.innerHTML = '<span>&#128545;</span>'
+        newHappyP.innerHTML = `<span>&#128512;</span> ${entry.reactions.happy}`
+        newLoveP.innerHTML = `<span>&#10084;&#65039;</span> ${entry.reactions.love}`
+        newAngryP.innerHTML = `<span>&#128545;</span> ${entry.reactions.angry}`
         newEmojiDiv.append(newHappyP)
         newEmojiDiv.append(newLoveP)
         newEmojiDiv.append(newAngryP)
         newFooter.append(newCommentsDiv)
         newFooter.append(newEmojiDiv)
-        //create comments section
-
-        // this will need to become a loop through the comment object
-        const newCommentsSection = document.createElement('section')
-        const newCommentsArticle = document.createElement('article')
-        const newAuthor = document.createElement('h3')
-        const newText = document.createElement('p')
-        newCommentsSection.classList.add('commentsSection');
-        newCommentsSection.classList.add('noDisplay');
-        newCommentsArticle.classList.add('comment');
-        newAuthor.classList.add('commentAuthor');
-        newText.classList.add('commentText');
-        newText.append('fake text data') // FIX: newText.append(entry.c1.text)
-        newAuthor.append('fake author data') //FIX: newAuthor.append(entry.c1.author)
-        newCommentsArticle.append(newAuthor)
-        newCommentsArticle.append(newText)
-        newCommentsSection.append(newCommentsArticle)
 
         //create article
         const newArticle = document.createElement('article')
@@ -122,7 +102,26 @@ window.addEventListener('load', async (e) => {
         newArticle.append(newMessage)
         newArticle.append(newSection)
         newArticle.append(newFooter)
+        
+        const newCommentsSection = document.createElement('section');
         newArticle.append(newCommentsSection)
+
+        //create comments section
+        for (let comment of entry.comments) {
+            const newCommentsArticle = document.createElement('article');
+            const newAuthor = document.createElement('h3');
+            const newText = document.createElement('p');
+            newCommentsSection.classList.add('commentsSection');
+            newCommentsSection.classList.add('noDisplay');
+            newCommentsArticle.classList.add('comment');
+            newAuthor.classList.add('commentAuthor');
+            newText.classList.add('commentText');
+            newText.append(comment.text);
+            newAuthor.append(comment.author); 
+            newCommentsArticle.append(newAuthor);
+            newCommentsArticle.append(newText);
+            newCommentsSection.append(newCommentsArticle);
+        }
 
         main.append(newArticle)
     }
