@@ -1,4 +1,7 @@
 
+/* body{
+    background-color: blue;
+} */
 #main-section{
     display: flex;
     justify-content: center;
@@ -6,6 +9,12 @@
     align-items: center;
     margin-left: 30%;
     width: 80%;
+}
+
+.gif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* main {
@@ -27,7 +36,7 @@
 
 .entryCard {
     border: 1px solid black;
-    width: 60%;
+    width: 55%;
     padding: 1.5rem;
 }
 
