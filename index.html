@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,27 +13,32 @@
 
 
 </head>
+
 <body>
-    <main>
-        <article class="entryForm">
-            <h2>Create new post</h2>
-            <form action="">
-                <textarea name="formTitle" id="formTitle" placeholder="Title" cols="60" rows="5"></textarea>
-                <textarea name="formMessage" id="formMessage" placeholder="Message" cols="60" rows="10"></textarea>
-                <textarea id="formGifSearch" placeholder="Search for GIF" cols="30" rows="1"></textarea>
-                <div id="formGifSection" class="noDisplay">
-                    <iframe id="gif1" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
-                    <iframe id="gif2" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
-                    <iframe id="gif3" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
-                </div>
-                <div id="gifSelectorSection" class="noDisplay">
-                    <input type="radio" name="gif" class="gifSelector">
-                    <input type="radio" name="gif" class="gifSelector">
-                    <input type="radio" name="gif" class="gifSelector">
-                </div>
-                <button>Post</button>
-            </form>
-        </article>
-    </main>
+    <section id="main-section">
+
+        <main>
+            <article class="entryForm">
+                <h2>Create new post</h2>
+                <form action="">
+                    <textarea name="formTitle" id="formTitle" placeholder="Title" cols="60" rows="5"></textarea>
+                    <textarea name="formMessage" id="formMessage" placeholder="Message" cols="60" rows="10"></textarea>
+                    <textarea id="formGifSearch" placeholder="Search for GIF" cols="30" rows="1"></textarea>
+                    <div id="formGifSection" class="noDisplay">
+                        <iframe id="gif1" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
+                        <iframe id="gif2" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
+                        <iframe id="gif3" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div id="gifSelectorSection" class="noDisplay">
+                        <input type="radio" name="gif" class="gifSelector">
+                        <input type="radio" name="gif" class="gifSelector">
+                        <input type="radio" name="gif" class="gifSelector">
+                    </div>
+                    <button>Post</button>
+                </form>
+            </article>
+        </main>
+    </section>
 </body>
+
 </html>
