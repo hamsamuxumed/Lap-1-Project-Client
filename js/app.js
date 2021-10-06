@@ -1,4 +1,15 @@
 // L8NZ2ooXz2otBXVDkffxMXzUVYL7AuQ3 this is our giphy API key
+const getData = async () => {
+    try {
+        const res = await fetch('https://caffeine-overflow-server.herokuapp.com/entries');
+        const data = await res.json();
+        console.log(data.xxx.xxx)
+    } catch (e) {
+        console.log('something went wrong', e)
+    }
+}
+
+data = getData()
 
 const search = document.querySelector('#formGifSearch');
 search.addEventListener('change', async (event) => {
@@ -30,9 +41,28 @@ postsSection.addEventListener('click', (event)=>{
             } catch {
                 console.log('there are no comments to display')
             }
-            
-        // } else if (event.target.classList.contains()){
-        //     // next function here
+        } 
+    } else if (event.target.classList.contains('emoji')){
+        const emojiID = event.target.parentElement.id
+        const emojiType = event.target.parentElement.className 
+        const emoji = document.querySelector(`#${emojiID}`)
+        const id = emojiID.split("-")
+        const happy = document.querySelector(`#happy-${id}`)
+        const love = document.querySelector(`#love-${id}`)
+        const angry = document.querySelector(`#angry-${id}`)
+
+        if (emojiType === 'happy') {
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${data.reactions.happy + 1}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${data.reactions.love}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${data.reactions.angry}`
+        } else if (emojiType === 'love') {
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${data.reactions.happy}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${data.reactions.love + 1}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${data.reactions.angry}`
+        } else if (emojiType === 'angry') {
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${data.reactions.happy}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${data.reactions.love}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${data.reactions.angry + 1}`
         }
     }
 })
@@ -85,9 +115,6 @@ const createNewEntry = (entry) => {
     const newHappyP = document.createElement('p')
     const newLoveP = document.createElement('p')
     const newAngryP = document.createElement('p')
-    const newHappySpan = document.createElement('span')
-    const newLoveSpan = document.createElement('span')
-    const newAngrySpan = document.createElement('span')
     newFooter.classList.add('entryFooter')
     newCommentsDiv.classList.add('comments')
     newButton.classList.add('commentSectionButton')
@@ -96,12 +123,14 @@ const createNewEntry = (entry) => {
     newHappyP.classList.add('happy')
     newLoveP.classList.add('love')
     newAngryP.classList.add('angry')
+    newHappyP.id = `happy-id${entry.id}`
+    newLoveP.id = `love-id${entry.id}`
+    newAngryP.id = `angry-id${entry.id}`
     newButton.append('comments section')
     newCommentsDiv.append(newButton)
-    newHappySpan.append('&#128512;') 
-    newHappyP.innerHTML = `<span>&#128512;</span> ${entry.reactions.happy}`
-    newLoveP.innerHTML = `<span>&#10084;&#65039;</span> ${entry.reactions.love}`
-    newAngryP.innerHTML = `<span>&#128545;</span> ${entry.reactions.angry}`
+    newHappyP.innerHTML = `<span class="emoji">&#128512;</span>${entry.reactions.happy}`
+    newLoveP.innerHTML = `<span class="emoji">&#10084;&#65039;</span>${entry.reactions.love}`
+    newAngryP.innerHTML = `<span class="emoji">&#128545;</span>${entry.reactions.angry}`
     newEmojiDiv.append(newHappyP)
     newEmojiDiv.append(newLoveP)
     newEmojiDiv.append(newAngryP)
