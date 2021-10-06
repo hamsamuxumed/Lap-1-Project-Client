@@ -1,0 +1,21 @@
+.sortBySection {
+    display: inline;
+    justify-content: space-around;
+}
+
+#sortByDate {
+    width: 49%;
+    float: left;
+    border: 1px solid red;
+}
+
+#sortByReactions {
+    width: 49%;
+    float: right;
+    margin-right: 10px;
+    border: 1px solid blue;
+}
+
+.sortByHeadings h2 {
+    text-align: center;
+}
