@@ -23,8 +23,14 @@ postsSection.addEventListener('click', (event)=>{
     console.dir(event);
     if (event.target.nodeName === 'BUTTON'){
         if (event.target.classList.contains('commentSectionButton')){
-            const commentsSection = document.querySelector('.commentsSection');
-            commentsSection.classList.toggle("noDisplay");
+            try{
+                const ID = event.target.id
+                const commentsSection = document.querySelector(`#commentsSection-${ID}`);
+                commentsSection.classList.toggle("noDisplay");
+            } catch {
+                console.log('there are no comments to display')
+            }
+            
         // } else if (event.target.classList.contains()){
         //     // next function here
         }
@@ -85,6 +91,7 @@ const createNewEntry = (entry) => {
     newFooter.classList.add('entryFooter')
     newCommentsDiv.classList.add('comments')
     newButton.classList.add('commentSectionButton')
+    newButton.id = `id${entry.id}`
     newEmojiDiv.classList.add('entryEmojiSection')
     newHappyP.classList.add('happy')
     newLoveP.classList.add('love')
@@ -120,6 +127,7 @@ const createNewEntry = (entry) => {
         const newText = document.createElement('p');
         newCommentsSection.classList.add('commentsSection');
         newCommentsSection.classList.add('noDisplay');
+        newCommentsSection.id = `commentsSection-id${entry.id}`;
         newCommentsArticle.classList.add('comment');
         newAuthor.classList.add('commentAuthor');
         newText.classList.add('commentText');
