@@ -1,15 +1,4 @@
 // L8NZ2ooXz2otBXVDkffxMXzUVYL7AuQ3 this is our giphy API key
-const getData = async () => {
-    try {
-        const res = await fetch('https://caffeine-overflow-server.herokuapp.com/entries');
-        const data = await res.json();
-        console.log(data.xxx.xxx)
-    } catch (e) {
-        console.log('something went wrong', e)
-    }
-}
-
-data = getData()
 
 const search = document.querySelector('#formGifSearch');
 search.addEventListener('change', async (event) => {
@@ -30,7 +19,7 @@ search.addEventListener('change', async (event) => {
 
 
 const postsSection = document.querySelector('main')
-postsSection.addEventListener('click', (event)=>{
+postsSection.addEventListener('click', async (event)=>{
     console.dir(event);
     if (event.target.nodeName === 'BUTTON'){
         if (event.target.classList.contains('commentSectionButton')){
@@ -45,24 +34,29 @@ postsSection.addEventListener('click', (event)=>{
     } else if (event.target.classList.contains('emoji')){
         const emojiID = event.target.parentElement.id
         const emojiType = event.target.parentElement.className 
-        const emoji = document.querySelector(`#${emojiID}`)
-        const id = emojiID.split("-")
-        const happy = document.querySelector(`#happy-${id}`)
-        const love = document.querySelector(`#love-${id}`)
-        const angry = document.querySelector(`#angry-${id}`)
+        // const emoji = document.querySelector(`#${emojiID}`)
+        const id = emojiID.split('')
+        const idNum = id[id.length - 1]
+        console.log(id[id.length - 1])
+        const happy = document.querySelector(`#happy-id${idNum}`)
+        const love = document.querySelector(`#love-id${idNum}`)
+        const angry = document.querySelector(`#angry-id${idNum}`)
+        const data = await axios.get(`https://caffeine-overflow-server.herokuapp.com/entries`);
+        const dataArray = data.data
+        const dataOfId = (dataArray[idNum-1])
 
         if (emojiType === 'happy') {
-            happy.innerHTML = `<span class="emoji">&#128512;</span>${data.reactions.happy + 1}`
-            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${data.reactions.love}`
-            angry.innerHTML = `<span class="emoji">&#128545;</span> ${data.reactions.angry}`
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${dataOfId.reactions.happy + 1}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${dataOfId.reactions.love}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${dataOfId.reactions.angry}`
         } else if (emojiType === 'love') {
-            happy.innerHTML = `<span class="emoji">&#128512;</span>${data.reactions.happy}`
-            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${data.reactions.love + 1}`
-            angry.innerHTML = `<span class="emoji">&#128545;</span> ${data.reactions.angry}`
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${dataOfId.reactions.happy}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${dataOfId.reactions.love + 1}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${dataOfId.reactions.angry}`
         } else if (emojiType === 'angry') {
-            happy.innerHTML = `<span class="emoji">&#128512;</span>${data.reactions.happy}`
-            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${data.reactions.love}`
-            angry.innerHTML = `<span class="emoji">&#128545;</span> ${data.reactions.angry + 1}`
+            happy.innerHTML = `<span class="emoji">&#128512;</span>${dataOfId.reactions.happy}`
+            love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${dataOfId.reactions.love}`
+            angry.innerHTML = `<span class="emoji">&#128545;</span> ${dataOfId.reactions.angry + 1}`
         }
     }
 })
@@ -70,7 +64,6 @@ postsSection.addEventListener('click', (event)=>{
 window.addEventListener('load', async (e) => {
     const data = await axios.get(`https://caffeine-overflow-server.herokuapp.com/entries`);
     const dataObject = data.data
-    console.log(dataObject)
     const main = document.querySelector('main')
     for (let entry of dataObject){
         const newArticle = createNewEntry(entry)
