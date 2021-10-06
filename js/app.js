@@ -17,7 +17,6 @@ search.addEventListener('change', async (event) => {
 
 const postsSection = document.querySelector('main')
 postsSection.addEventListener('click', async (event)=>{
-    event.preventDefault();
     if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('commentSectionButton')){
         try{
             const ID = event.target.id
@@ -53,13 +52,13 @@ postsSection.addEventListener('click', async (event)=>{
             angry.innerHTML = `<span class="emoji">&#128545;</span> ${dataOfId.reactions.angry + 1}`
         }
     } else if (event.target.nodeName === 'BUTTON') {
-        console.log('HERE!')
+        event.preventDefault();
         if (event.target.classList.contains('addCommentButton')) {
             try {
                 const ID = event.target.id;
                 const idNumber = ID.split("d")[1];
                 const commentContent = {
-                    test: event.target.previousElementSibling.value,
+                    text: event.target.previousElementSibling.value,
                     author: "test username"
                 }
                 const response = await axios.post(`http://localhost:3000/entries/comments/${idNumber}`, commentContent);
@@ -77,7 +76,6 @@ postsSection.addEventListener('click', async (event)=>{
                 newCommentsArticle.append(newText);
 
                 const commentSection = document.querySelector(`#commentsSection-id${idNumber}`);
-                console.log(commentSection)
                 commentSection.append(newCommentsArticle);
             } catch {
                 console.log('there are no comments to display')
@@ -143,7 +141,7 @@ const createNewEntry = (entry) => {
     newHappyP.id = `happy-id${entry.id}`
     newLoveP.id = `love-id${entry.id}`
     newAngryP.id = `angry-id${entry.id}`
-    newButton.append('comments section')
+    newButton.append('View All Comments')
     newCommentsDiv.append(newButton)
     newHappyP.innerHTML = `<span class="emoji">&#128512;</span>${entry.reactions.happy}`
     newLoveP.innerHTML = `<span class="emoji">&#10084;&#65039;</span>${entry.reactions.love}`
