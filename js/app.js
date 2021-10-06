@@ -117,7 +117,29 @@ const createNewEntry = (entry) => {
     newArticle.append(newSection)
     newArticle.append(newFooter)
 
+    //creating comments section
     const newCommentsSection = document.createElement('section');
+    newCommentsSection.classList.add('commentsSection');
+    newCommentsSection.classList.add('noDisplay');
+    newCommentsSection.id = `commentsSection-id${entry.id}`;
+
+    //creating comments form within comments section
+    const newCommentsForm = document.createElement('form');
+    const newTextInput = document.createElement('input')
+    const newSubmitInput = document.createElement('input')
+    newCommentsForm.action = ''
+    newTextInput.type = 'text'
+    newTextInput.placeholder = 'Add comment here'
+    newTextInput.id = `textInput-id${entry.id}`
+    newTextInput.name = `textInput-id${entry.id}`
+    newSubmitInput.type = 'submit'
+    newSubmitInput.value = 'Add'
+    newSubmitInput.id = `submitInput-id${entry.id}`
+    newSubmitInput.name = `submitInput-id${entry.id}`
+    newCommentsForm.append(newTextInput)
+    newCommentsForm.append(newSubmitInput)
+    newCommentsSection.append(newCommentsForm)
+
     newArticle.append(newCommentsSection)
 
     //create comments section
@@ -125,9 +147,7 @@ const createNewEntry = (entry) => {
         const newCommentsArticle = document.createElement('article');
         const newAuthor = document.createElement('h3');
         const newText = document.createElement('p');
-        newCommentsSection.classList.add('commentsSection');
-        newCommentsSection.classList.add('noDisplay');
-        newCommentsSection.id = `commentsSection-id${entry.id}`;
+        
         newCommentsArticle.classList.add('comment');
         newAuthor.classList.add('commentAuthor');
         newText.classList.add('commentText');
