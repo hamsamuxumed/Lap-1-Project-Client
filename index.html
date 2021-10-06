@@ -12,6 +12,7 @@
     <script defer src="./js/api.js"></script>
     <script defer src="./js/app.js"></script>
 
+    <script defer src="./js/sortBy.js"></script>
 
 </head>
 <body>
@@ -24,24 +25,19 @@
                     <textarea name="formTitle" id="formTitle" placeholder="Title (max 50 characters)" maxlength="50"></textarea>
                 </div>
                 <div class="formItem">
-                    <label for="formUsername" class="formLabel">Username</label>
-                    <input name="formUsername" id="formUsername" placeholder="Username"/>
-                </div>
-                <div class="formItem">
                     <label for="formMessage" class="formLabel">Entry Content</label>
                     <textarea name="formMessage" id="formMessage" placeholder="Message (max 1000 characters)" cols="60" rows="10" maxlength="1000"></textarea>
                 </div>
                 <div id="gifSearch" class="formItem">
                     <label for="formGifSearch" class="formLabel">Search for a GIF</label>
                     <input id="formGifSearch" placeholder="Search for GIF"/>
-                    <button id="searchButton" class="button">Search</button>
                 </div>
                 <div id="gifSection" class="formItem noDisplay">
-                    <iframe id="gif1" class="formGif" src="/" frameborder="0" scrolling="no"></iframe>
+                    <iframe id="gif1" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
                     <input type="radio" name="gif" value="" class="gifSelector"/>
-                    <iframe id="gif2" class="formGif" src="/" frameborder="0" scrolling="no"></iframe>
+                    <iframe id="gif2" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
                     <input type="radio" name="gif" value="" class="gifSelector"/>
-                    <iframe id="gif3" class="formGif" src="/" frameborder="0" scrolling="no"></iframe>
+                    <iframe id="gif3" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
                     <input type="radio" name="gif" value="" class="gifSelector"/>
                 </div>
                 <button id="postButton" class="button">Post</button>
