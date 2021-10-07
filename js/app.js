@@ -10,33 +10,33 @@ search.addEventListener('change', async (event) => {
     for (let [index, frame] of iframes.entries()) {
         frame.src = res.data.data[index].embed_url;
         radioButtons[index].value = res.data.data[index].embed_url;
-    } 
+    }
     const gifs = document.querySelector('#gifSection')
     gifs.classList.remove('noDisplay');
 });
 
 const postsSection = document.querySelector('main')
-postsSection.addEventListener('click', async (event)=>{
-    if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('commentSectionButton')){
-        try{
+postsSection.addEventListener('click', async (event) => {
+    if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('commentSectionButton')) {
+        try {
             const ID = event.target.id
             const commentsSection = document.querySelector(`#commentsSection-${ID}`);
             commentsSection.classList.toggle("noDisplay");
         } catch {
             console.log('error in the first if of the main event listner')
         }
-    } else if (event.target.classList.contains('emoji')){
+    } else if (event.target.classList.contains('emoji')) {
         const emojiID = event.target.parentElement.id
-        const emojiType = event.target.parentElement.className 
+        const emojiType = event.target.parentElement.className
         const id = emojiID.split('d')
         const idNum = id[id.length - 1]
         console.log(id[id.length - 1])
         const happy = document.querySelector(`#happy-id${idNum}`)
         const love = document.querySelector(`#love-id${idNum}`)
         const angry = document.querySelector(`#angry-id${idNum}`)
-        const data = await axios.get(`http://localhost:3000/entries`);
+        const data = await axios.get(`http://localhost:2000/entries`);
         const dataArray = data.data
-        const dataOfId = (dataArray[idNum-1])
+        const dataOfId = (dataArray[idNum - 1])
 
         if (emojiType === 'happy') {
             happy.innerHTML = `<span class="emoji">&#128512;</span>${dataOfId.reactions.happy + 1}`
@@ -60,7 +60,7 @@ postsSection.addEventListener('click', async (event)=>{
                 text: event.target.previousElementSibling.value,
                 author: "test username"
             }
-            const response = await axios.post(`http://localhost:3000/entries/comments/${idNumber}`, commentContent);
+            const response = await axios.post(`http://localhost:2000/entries/comments/${idNumber}`, commentContent);
 
             const newCommentsArticle = document.createElement('article');
             const newAuthor = document.createElement('h3');
@@ -74,41 +74,41 @@ postsSection.addEventListener('click', async (event)=>{
             newCommentsArticle.id = `articleComment-id${response.data.id}`
             newCommentsArticle.append(newAuthor);
             newCommentsArticle.append(newText);
-            
+
             const deleteCommentButton = document.createElement('button');
             deleteCommentButton.append('Delete Comment');
             deleteCommentButton.id = `deleteCommentButton-id${response.data.id}`
             deleteCommentButton.classList.add('deleteCommentButton')
             newCommentsArticle.append(deleteCommentButton)
-                        
+
             const commentSection = document.querySelector(`#commentsSection-id${idNumber}`);
             commentSection.append(newCommentsArticle);
         } catch {
             console.log('error in the third if of the main event listner')
         }
-    } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteEntryButton')){
+    } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteEntryButton')) {
         const ID = event.target.id;
         const idNumber = ID.split("d")[2];
-        const response = await axios.delete(`http://localhost:3000/entries/delete/${idNumber}`, { data: { idNumber } });
+        const response = await axios.delete(`http://localhost:2000/entries/delete/${idNumber}`, { data: { idNumber } });
         const article = document.querySelector(`#entryArticle-id${idNumber}`);
         article.classList.add("noDisplay");
-    } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteCommentButton')){
+    } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteCommentButton')) {
         const entryId = event.target.parentElement.parentElement.id;
-        const entryIdNumber = entryId.split("d")[1]      
+        const entryIdNumber = entryId.split("d")[1]
         const commentId = event.target.id;
         const commentIdNumber = commentId.split("d")[2]
-        const response = await axios.delete(`http://localhost:3000/entries/comments/delete/${entryIdNumber}/${commentIdNumber}`, { data: { commentIdNumber } });
+        const response = await axios.delete(`http://localhost:2000/entries/comments/delete/${entryIdNumber}/${commentIdNumber}`, { data: { commentIdNumber } });
         const comment = document.querySelector(`#articleComment-id${commentIdNumber}`);
         comment.classList.add("noDisplay");
     };
 });
 
 window.addEventListener('load', async (e) => {
-    const data = await axios.get(`http://localhost:3000/entries`);
+    const data = await axios.get(`http://localhost:2000/entries`);
     const dataObject = data.data;
     const section = document.querySelector('#entrySection');
 
-    dataObject.sort(function(a, b) {
+    dataObject.sort(function (a, b) {
         let dateA = new Date(a.date);
         let dateB = new Date(b.date);
         return dateB - dateA;
@@ -118,7 +118,7 @@ window.addEventListener('load', async (e) => {
         section.append(newEntry);
     }
 
-    dataObject.sort(function(a, b) {
+    dataObject.sort(function (a, b) {
         let entryA = parseInt(a.reactions.happy + a.reactions.love + a.reactions.angry);
         let entryB = parseInt(b.reactions.happy + b.reactions.love + b.reactions.angry);
         return entryB - entryA;
@@ -241,12 +241,12 @@ const createNewEntry = (entry) => {
         const newCommentsArticle = document.createElement('article');
         const newAuthor = document.createElement('h3');
         const newText = document.createElement('p');
-        
+
         newCommentsArticle.classList.add('comment');
         newAuthor.classList.add('commentAuthor');
         newText.classList.add('commentText');
         newText.append(comment.text);
-        newAuthor.append(comment.author); 
+        newAuthor.append(comment.author);
         newCommentsArticle.append(newAuthor);
         newCommentsArticle.append(newText);
         newCommentsSection.append(newCommentsArticle);
