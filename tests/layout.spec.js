@@ -30,4 +30,16 @@ describe('Layout of website', () => {
         let main = document.querySelector('main');
         expect(main).toBeTruthy();
     });
+
+    test('It has an article section', () => {
+        let article = document.querySelector('article');
+        expect(article).toBeTruthy();
+    });
+
+    test('It has a header', () => {
+        let header = document.getElementById('main-header');
+        expect(header.textContent).toContain('Add your own News entry');
+    });
+
+    // test('It ')
 });
