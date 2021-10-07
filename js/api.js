@@ -30,13 +30,11 @@ async function submitEntry(e) {
 
     const response = await axios.post('http://localhost:3000/entries', body);
     let newEntry = createNewEntry(response.data);
-    const deleteButton = document.createElement('button');
-    deleteButton.append('Delete Entry');
-    deleteButton.id = `id${response.data.id}`
-    console.log('delete button')
-    const main = document.querySelector('main');
-    main.prepend(newEntry);
-    main.prepend(deleteButton);
+    
+    const section = document.querySelector('#entrySection');
+    section.prepend(newEntry);
+    const deleteButton = document.querySelector(`#deleteButton-id${response.data.id}`)
+    deleteButton.classList.toggle('noDisplay')
 }
 
 // DELETE comment
