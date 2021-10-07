@@ -33,7 +33,7 @@ async function submitEntry(e) {
     
     const section = document.querySelector('#entrySection');
     section.prepend(newEntry);
-    const deleteButton = document.querySelector(`#id${response.data.id}`)
+    const deleteButton = document.querySelector(`#deleteButton-id${response.data.id}`)
     deleteButton.classList.toggle('noDisplay')
 }
 
