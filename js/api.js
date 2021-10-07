@@ -21,7 +21,7 @@ async function submitEntry(e) {
         gifUrl: gifUrl
     };
 
-    const response = await axios.post('http://localhost:2000/entries', body);
+    const response = await axios.post('http://localhost:3000/entries', body);
     let newEntry = createNewEntry(response.data);
     console.log(body);
     const section = document.querySelector('#entrySection');
