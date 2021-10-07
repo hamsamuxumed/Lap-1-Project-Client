@@ -1,5 +1,6 @@
 :root {
     --light-grey: rgb(204 202 202);
+    --blue: #2d9fd9;
   }
   
 .noDisplay {
@@ -155,6 +156,7 @@ button {
     line-height: 20px;
     padding: 10px 12px;
     transition: all 200ms;
+    /* background-color: var(--blue); */
 }
 
 .commentSectionButton {
@@ -162,7 +164,8 @@ button {
 }
 
 #postButton {
-    background-color: #cecece;
+    /* background-color: #cecece; */
+    /* background-color: var(--blue); */
     width: 71%;
     margin-top: 10px;
     margin-left: 13%;
@@ -205,9 +208,17 @@ button {
     right: 0;
   }
 .gif {
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 article {
     margin: 30px
+}
+
+input[type="text" i] {
+     border-radius: 20px;
+     border: 1px solid var(--blue);
+     width: 250px;
+     height: 30px;
+     padding-left: 10px;
 }
