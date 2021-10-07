@@ -48,3 +48,19 @@
 .gifSelector {
     width: 30%;
 }
+
+/*  ------------------------------------------------------- */
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+#main-section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 23%;
+    width: 70%;
+}
