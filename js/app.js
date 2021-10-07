@@ -87,10 +87,10 @@ postsSection.addEventListener('click', async (event)=>{
 window.addEventListener('load', async (e) => {
     const data = await axios.get(`http://localhost:3000/entries`);
     const dataObject = data.data;
-    const main = document.querySelector('main');
+    const section = document.querySelector('#entrySection');
     for (let entry of dataObject){
         const newArticle = createNewEntry(entry);
-        main.append(newArticle);
+        section.append(newArticle);
     }
 })
 
@@ -143,6 +143,14 @@ const createNewEntry = (entry) => {
     newAngryP.id = `angry-id${entry.id}`
     newButton.append('View All Comments')
     newCommentsDiv.append(newButton)
+
+    const deleteButton = document.createElement('button');
+    deleteButton.append('Delete Entry');
+    deleteButton.id = `id${entry.id}`
+    deleteButton.classList.add('noDisplay')
+    console.log('delete button')
+    newCommentsDiv.append(deleteButton)
+
     newHappyP.innerHTML = `<span class="emoji">&#128512;</span>${entry.reactions.happy}`
     newLoveP.innerHTML = `<span class="emoji">&#10084;&#65039;</span>${entry.reactions.love}`
     newAngryP.innerHTML = `<span class="emoji">&#128545;</span>${entry.reactions.angry}`
