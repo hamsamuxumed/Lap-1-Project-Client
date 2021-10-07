@@ -51,36 +51,39 @@ postsSection.addEventListener('click', async (event)=>{
             love.innerHTML = `<span class="emoji">&#10084;&#65039;</span> ${dataOfId.reactions.love}`
             angry.innerHTML = `<span class="emoji">&#128545;</span> ${dataOfId.reactions.angry + 1}`
         }
-    } else if (event.target.nodeName === 'BUTTON') {
+    } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('addCommentButton')) {
         event.preventDefault();
-        if (event.target.classList.contains('addCommentButton')) {
-            try {
-                const ID = event.target.id;
-                const idNumber = ID.split("d")[1];
-                const commentContent = {
-                    text: event.target.previousElementSibling.value,
-                    author: "test username"
-                }
-                const response = await axios.post(`http://localhost:3000/entries/comments/${idNumber}`, commentContent);
-
-                const newCommentsArticle = document.createElement('article');
-                const newAuthor = document.createElement('h3');
-                const newText = document.createElement('p');
-
-                newCommentsArticle.classList.add('comment');
-                newAuthor.classList.add('commentAuthor');
-                newText.classList.add('commentText');
-                newText.append(response.data.text);
-                newAuthor.append(response.data.author);
-                newCommentsArticle.append(newAuthor);
-                newCommentsArticle.append(newText);
-
-                const commentSection = document.querySelector(`#commentsSection-id${idNumber}`);
-                commentSection.append(newCommentsArticle);
-            } catch {
-                console.log('there are no comments to display')
+        try {
+            const ID = event.target.id;
+            const idNumber = ID.split("d")[1];
+            const commentContent = {
+                text: event.target.previousElementSibling.value,
+                author: "test username"
             }
-        } 
+            const response = await axios.post(`http://localhost:3000/entries/comments/${idNumber}`, commentContent);
+
+            const newCommentsArticle = document.createElement('article');
+            const newAuthor = document.createElement('h3');
+            const newText = document.createElement('p');
+
+            newCommentsArticle.classList.add('comment');
+            newAuthor.classList.add('commentAuthor');
+            newText.classList.add('commentText');
+            newText.append(response.data.text);
+            newAuthor.append(response.data.author);
+            newCommentsArticle.append(newAuthor);
+            newCommentsArticle.append(newText);
+
+            const commentSection = document.querySelector(`#commentsSection-id${idNumber}`);
+            commentSection.append(newCommentsArticle);
+        } catch {
+            console.log('there are no comments to display')
+        }
+    } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteEntryButton')){
+        const ID = event.target.id;
+        const idNumber = ID.split("d")[1];
+
+        // const response = await axios.post(`http://localhost:3000/entries/deletr/${idNumber}`, commentContent);
     }
 })
 
@@ -148,6 +151,7 @@ const createNewEntry = (entry) => {
     deleteButton.append('Delete Entry');
     deleteButton.id = `deleteButton-id${entry.id}`
     deleteButton.classList.add('noDisplay')
+    deleteButton.classList.add('deleteEntryButton')
     console.log('delete button')
     newCommentsDiv.append(deleteButton)
 
