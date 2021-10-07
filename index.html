@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Page Name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="./css/style.css">
 
     <link rel="stylesheet" href="./css/style1.css">
@@ -15,30 +17,33 @@
     <script defer src="./js/sortBy.js"></script>
 
 </head>
+
 <body>
-    <main>
+    <main id="main-section">
         <article>
             <form class="entryForm">
                 <h2>Add your own News entry</h2>
                 <div class="formItem">
                     <label for="formTitle" class="formLabel">Entry Title</label>
-                    <textarea name="formTitle" id="formTitle" placeholder="Title (max 50 characters)" maxlength="50"></textarea>
+                    <textarea name="formTitle" id="formTitle" placeholder="Title (max 50 characters)"
+                        maxlength="50"></textarea>
                 </div>
                 <div class="formItem">
                     <label for="formMessage" class="formLabel">Entry Content</label>
-                    <textarea name="formMessage" id="formMessage" placeholder="Message (max 1000 characters)" cols="60" rows="10" maxlength="1000"></textarea>
+                    <textarea name="formMessage" id="formMessage" placeholder="Message (max 1000 characters)" cols="60"
+                        rows="10" maxlength="1000"></textarea>
                 </div>
                 <div id="gifSearch" class="formItem">
                     <label for="formGifSearch" class="formLabel">Search for a GIF</label>
-                    <input id="formGifSearch" placeholder="Search for GIF"/>
+                    <input id="formGifSearch" placeholder="Search for GIF" />
                 </div>
                 <div id="gifSection" class="formItem noDisplay">
                     <iframe id="gif1" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
-                    <input type="radio" name="gif" value="" class="gifSelector"/>
+                    <input type="radio" name="gif" value="" class="gifSelector" />
                     <iframe id="gif2" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
-                    <input type="radio" name="gif" value="" class="gifSelector"/>
+                    <input type="radio" name="gif" value="" class="gifSelector" />
                     <iframe id="gif3" class="formGif" src="" frameborder="0" scrolling="no"></iframe>
-                    <input type="radio" name="gif" value="" class="gifSelector"/>
+                    <input type="radio" name="gif" value="" class="gifSelector" />
                 </div>
                 <button id="postButton" class="button">Post</button>
             </form>
@@ -58,4 +63,5 @@
         </div>
     </main>
 </body>
+
 </html>
