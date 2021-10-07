@@ -45,12 +45,13 @@ async function getSortedEntries(data, criteria="reactions") {
         createNewEntry(data.data[i]);
         // console.log(`response: ${response}`)
         // console.log(`data.data: ${data.data.length}`)
-        // if (response.length === data.data.length) {
-        //     break;
-        // } else {
+        console.log('response', response)
+        if (document.documentElement.textContent.indexOf(data.data[i]) > -1) {
             response.append(data.data[i]);
-        // }
+        } else {
+            console.log('entry already present')
+            break;
+        }
     };
-    console.log('creating done')
 };
 
