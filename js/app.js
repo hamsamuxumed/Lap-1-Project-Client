@@ -71,12 +71,13 @@ postsSection.addEventListener('click', async (event)=>{
             newText.classList.add('commentText');
             newText.append(response.data.text);
             newAuthor.append(response.data.author);
+            newCommentsArticle.id = `articleComment-id${response.data.id}`
             newCommentsArticle.append(newAuthor);
             newCommentsArticle.append(newText);
             
             const deleteCommentButton = document.createElement('button');
             deleteCommentButton.append('Delete Comment');
-            deleteCommentButton.id = `deleteCommentButton-id${idNumber}`
+            deleteCommentButton.id = `deleteCommentButton-id${response.data.id}`
             deleteCommentButton.classList.add('deleteCommentButton')
             newCommentsArticle.append(deleteCommentButton)
                         
@@ -87,23 +88,45 @@ postsSection.addEventListener('click', async (event)=>{
         }
     } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteEntryButton')){
         const ID = event.target.id;
-        const idNumber = ID.split("d")[1];
-
-        // const response = await axios.post(`http://localhost:3000/entries/deletr/${idNumber}`, commentContent);
+        const idNumber = ID.split("d")[2];
+        const response = await axios.delete(`http://localhost:3000/entries/delete/${idNumber}`, { data: { idNumber } });
+        const article = document.querySelector(`#entryArticle-id${idNumber}`);
+        article.classList.add("noDisplay");
     } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteCommentButton')){
-        const ID = event.target.id;
-        const idNumber = ID.split("d")[1]
-        // cosnt commentID = ??
-    }
-})
+        const entryId = event.target.parentElement.parentElement.id;
+        const entryIdNumber = entryId.split("d")[1]      
+        const commentId = event.target.id;
+        const commentIdNumber = commentId.split("d")[2]
+        const response = await axios.delete(`http://localhost:3000/entries/comments/delete/${entryIdNumber}/${commentIdNumber}`, { data: { commentIdNumber } });
+        const comment = document.querySelector(`#articleComment-id${commentIdNumber}`);
+        comment.classList.add("noDisplay");
+    };
+});
 
 window.addEventListener('load', async (e) => {
     const data = await axios.get(`http://localhost:3000/entries`);
     const dataObject = data.data;
     const section = document.querySelector('#entrySection');
-    for (let entry of dataObject){
-        const newArticle = createNewEntry(entry);
-        section.append(newArticle);
+
+    dataObject.sort(function(a, b) {
+        let dateA = new Date(a.date);
+        let dateB = new Date(b.date);
+        return dateB - dateA;
+    });
+    for (let entry of dataObject) {
+        let newEntry = createNewEntry(entry);
+        section.append(newEntry);
+    }
+
+    dataObject.sort(function(a, b) {
+        let entryA = parseInt(a.reactions.happy + a.reactions.love + a.reactions.angry);
+        let entryB = parseInt(b.reactions.happy + b.reactions.love + b.reactions.angry);
+        return entryB - entryA;
+    });
+    for (let entry of dataObject) {
+        let newEntry = createNewEntry(entry);
+        newEntry.classList.add("noDisplay");
+        section.append(newEntry);
     }
 })
 
@@ -177,6 +200,7 @@ const createNewEntry = (entry) => {
     //create article
     const newArticle = document.createElement('article')
     newArticle.classList.add('entryCard')
+    newArticle.id = `entryArticle-id${entry.id}`
     newArticle.append(newHeader)
     newArticle.append(newTitle)
     newArticle.append(newMessage)
@@ -228,4 +252,4 @@ const createNewEntry = (entry) => {
         newCommentsSection.append(newCommentsArticle);
     }
     return newArticle
-}
+};
