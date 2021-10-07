@@ -28,13 +28,13 @@ postsSection.addEventListener('click', async (event)=>{
     } else if (event.target.classList.contains('emoji')){
         const emojiID = event.target.parentElement.id
         const emojiType = event.target.parentElement.className 
-        const id = emojiID.split('')
+        const id = emojiID.split('d')
         const idNum = id[id.length - 1]
         console.log(id[id.length - 1])
         const happy = document.querySelector(`#happy-id${idNum}`)
         const love = document.querySelector(`#love-id${idNum}`)
         const angry = document.querySelector(`#angry-id${idNum}`)
-        const data = await axios.get(`https://caffeine-overflow-server.herokuapp.com/entries`);
+        const data = await axios.get(`http://localhost:3000/entries`);
         const dataArray = data.data
         const dataOfId = (dataArray[idNum-1])
 
@@ -146,7 +146,7 @@ const createNewEntry = (entry) => {
 
     const deleteButton = document.createElement('button');
     deleteButton.append('Delete Entry');
-    deleteButton.id = `id${entry.id}`
+    deleteButton.id = `deleteButton-id${entry.id}`
     deleteButton.classList.add('noDisplay')
     console.log('delete button')
     newCommentsDiv.append(deleteButton)
