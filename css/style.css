@@ -6,8 +6,8 @@
 
 .entryCard {
     border: 1px solid black;
-    width: 40%;
-    padding: 2rem;
+    width: 55%;
+    padding: 1.5rem;
 }
 
 .entryHeader {
@@ -37,8 +37,12 @@
 /* FORM ------------------------------------------------------- */
 .entryForm {
     border: 1px solid black;
-    width: 40%;
+    width: 53.5%;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 .entryForm iframe {
@@ -64,3 +68,29 @@
     margin-left: 23%;
     width: 70%;
 }
+
+#main-header {
+    width: 70%;
+    margin-left: 13%;
+    display: flex;
+    justify-content: center;
+}
+
+#formTitle {
+    width: 70%;
+    height: 20px;
+    margin-left: 13%;
+}
+
+#formMessage {
+    width: 70%;
+    margin-left: 13%;
+
+}
+#formGifSearch {
+    width: 70%;
+    height: 20px;
+    margin-left: 13%;
+}
+
+
