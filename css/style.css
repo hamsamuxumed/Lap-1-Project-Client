@@ -93,4 +93,46 @@
     margin-left: 13%;
 }
 
+#postButton {
+    background-color: #cecece;
+    width: 71%;
+    margin-top: 10px;
+    margin-left: 13%;
+    border-radius: 8px;
+    border-width: 0;
+    cursor: pointer; 
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 10px 12px;
+    transition: all 200ms;  
+}
 
+#postButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  #postButton:hover  {
+    background-color: #afacac;
+  }
+  
+  #postButton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  #postButton:hover span {
+    padding-right: 25px;
+  }
+  
+  #postButton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
