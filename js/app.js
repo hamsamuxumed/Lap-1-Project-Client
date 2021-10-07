@@ -1,5 +1,3 @@
-// L8NZ2ooXz2otBXVDkffxMXzUVYL7AuQ3 this is our giphy API key
-
 const search = document.querySelector('#formGifSearch');
 search.addEventListener('change', async (event) => {
     event.preventDefault()
