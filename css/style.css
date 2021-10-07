@@ -5,6 +5,46 @@
 .noDisplay {
     display: none;
 }
+/* Nav ------------------------------------------------------- */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lightgray;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+}
+
+#logo-section {
+    width: 30%;
+    display: inline-block;
+    align-items: center;
+}
+#icon {
+    width: 3rem;
+    height: 2rem;
+    padding: 0px 1rem;
+}
+
+#account-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background: lightgray;
+    z-index: 10; /* specifies the stack order*/
+  }
+  
+
+
 
 /* Entries ------------------------------------------------------- */
 
@@ -57,7 +97,7 @@
 }
 
 .entryForm iframe {
-    width: 30%;
+    width: 60%;
 }
 
 .gifSelector {
@@ -71,7 +111,7 @@
 }
 
 
-#main-section{
+#entry-section{
     display: flex;
     justify-content: center;
     flex-direction: column;
