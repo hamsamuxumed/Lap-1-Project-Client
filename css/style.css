@@ -9,6 +9,8 @@
     width: 55%;
     padding: 1.5rem;
     margin: 20px;
+    border-radius: 4px;
+    padding-left: 40px;
 }
 
 .entryHeader {
@@ -23,6 +25,7 @@
 
 .entryEmojiSection {
     display: flex;
+    margin: 10px;
 }
 
 .entryEmojiSection p {
@@ -31,7 +34,10 @@
 
 /* Comments ------------------------------------------------------- */
 .comment {
-    border: 1px solid black
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 25px;
+
 }
 
 
@@ -66,7 +72,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-left: 23%;
+    margin-left: 28%;
     width: 70%;
 }
 
@@ -92,6 +98,23 @@
     width: 70%;
     height: 20px;
     margin-left: 13%;
+}
+
+button {
+    margin: 5px;
+    margin-left: 1%;
+    border-radius: 8px;
+    border-width: 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 10px 12px;
+    transition: all 200ms;
+}
+
+.commentSectionButton {
+    width: 100%;
 }
 
 #postButton {
@@ -137,3 +160,10 @@
     opacity: 1;
     right: 0;
   }
+.gif {
+    margin-left: 50px;
+}
+
+article {
+    margin: 30px
+}
