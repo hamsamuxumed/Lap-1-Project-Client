@@ -1,42 +1,57 @@
-// window.onload = function() {
-//     getData("recent")
-//     getData("reactions")
-// };
+// Get sortBy to work on new entries as well
+// convert [object Object] to display entry
 
-// async function getData(criteria) {
-//     let entries = await axios.get('https://caffeine-overflow-server.herokuapp.com/entries');
-//     getSortedEntries(entries, criteria);
-// }
+const dateButton = document.getElementById('sortByDateButton');
+dateButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    getData("recent");
+});
 
-// async function getSortedEntries(data, criteria="reactions") {
-//     let recentEntry = document.getElementById('sortByDate');
-//     let reactionEntry = document.getElementById('sortByReactions');
-//     let response;
+const reactionsButton = document.getElementById('sortByReactionButton');
+reactionsButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    getData();
+});
 
-//     console.log(data.data);
+async function getData(criteria) {
+    let entries = await axios.get('https://caffeine-overflow-server.herokuapp.com/entries');
+    getSortedEntries(entries, criteria);
+};
 
-//     if (criteria === "recent") {
-//         data.data.sort(function(a, b) {
-//             let dateA = new Date(a.date);
-//             let dateB = new Date(b.date)
-//             return dateB - dateA;
-//         });
-//         response = recentEntry;
-//     } else {
-//         data.data.sort(function(a, b) {
-//             let entryA = parseInt(a.happy + a.love + a.angry);
-//             let entryB = parseInt(b.happy + b.love + b.angry);
-//             return entryB - entryA;
-//         });
-//         response = reactionEntry;
-//     }
+async function getSortedEntries(data, criteria="reactions") {
+    let recentEntry = document.getElementById('sortByDate');
+    let reactionEntry = document.getElementById('sortByReactions');
+    let response;
 
-//     // For each entry in data
-//     for (let i = 0; i < data.data.length; i++) {
-//         console.log(i)
-//         // let reactions = { data.data[i].reactions.happy,  }
-//         createNewEntry(i);
-//         response.append(i);
-//     }
-// }
+    if (criteria === "recent") {
+        data.data.sort(function(a, b) {
+            let dateA = new Date(a.date);
+            let dateB = new Date(b.date)
+            return dateB - dateA;
+        });
+        response = recentEntry;
+    } else {
+        data.data.sort(function(a, b) {
+            let entryA = parseInt(a.reactions.happy + a.reactions.love + a.reactions.angry);
+            let entryB = parseInt(b.reactions.happy + b.reactions.love + b.reactions.angry);
+            return entryB - entryA;
+        });
+        response = reactionEntry;
+    };
+    
+    // For each entry in data
+    for (let i = 0; i < data.data.length; i++) {
+        console.log(data.data[i])
+        createNewEntry(data.data[i]);
+        // console.log(`response: ${response}`)
+        // console.log(`data.data: ${data.data.length}`)
+        console.log('response', response)
+        if (document.documentElement.textContent.indexOf(data.data[i]) > -1) {
+            response.append(data.data[i]);
+        } else {
+            console.log('entry already present')
+            break;
+        }
+    };
+};
 
