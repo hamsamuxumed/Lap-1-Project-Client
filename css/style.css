@@ -1,3 +1,7 @@
+:root {
+    --light-grey: rgb(204 202 202);
+  }
+  
 .noDisplay {
     display: none;
 }
@@ -5,7 +9,7 @@
 /* Entries ------------------------------------------------------- */
 
 .entryCard {
-    border: 1px solid black;
+    border: 1px solid var(--light-grey);
     width: 55%;
     padding: 1.5rem;
     margin: 20px;
@@ -34,7 +38,7 @@
 
 /* Comments ------------------------------------------------------- */
 .comment {
-    border: 1px solid black;
+    border: 1px solid var(--light-grey);
     padding: 20px;
     border-radius: 25px;
 
