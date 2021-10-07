@@ -23,7 +23,7 @@ postsSection.addEventListener('click', async (event)=>{
             const commentsSection = document.querySelector(`#commentsSection-${ID}`);
             commentsSection.classList.toggle("noDisplay");
         } catch {
-            console.log('there are no comments to display')
+            console.log('error in the first if of the main event listner')
         }
     } else if (event.target.classList.contains('emoji')){
         const emojiID = event.target.parentElement.id
@@ -73,17 +73,27 @@ postsSection.addEventListener('click', async (event)=>{
             newAuthor.append(response.data.author);
             newCommentsArticle.append(newAuthor);
             newCommentsArticle.append(newText);
-
+            
+            const deleteCommentButton = document.createElement('button');
+            deleteCommentButton.append('Delete Comment');
+            deleteCommentButton.id = `deleteCommentButton-id${idNumber}`
+            deleteCommentButton.classList.add('deleteCommentButton')
+            newCommentsArticle.append(deleteCommentButton)
+                        
             const commentSection = document.querySelector(`#commentsSection-id${idNumber}`);
             commentSection.append(newCommentsArticle);
         } catch {
-            console.log('there are no comments to display')
+            console.log('error in the third if of the main event listner')
         }
     } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteEntryButton')){
         const ID = event.target.id;
         const idNumber = ID.split("d")[1];
 
         // const response = await axios.post(`http://localhost:3000/entries/deletr/${idNumber}`, commentContent);
+    } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteCommentButton')){
+        const ID = event.target.id;
+        const idNumber = ID.split("d")[1]
+        // cosnt commentID = ??
     }
 })
 
