@@ -14,7 +14,7 @@ describe('Head section', () => {
     test('It has a title', () => {
         let webTitle = document.querySelector('title');
         expect(webTitle).toBeTruthy();
-        expect(webTitle.textContent).toContain("JOURNALISTS 'R' US");
+        expect(webTitle.textContent).toContain('Caffeine Newswire');
     });
 
     test('Favicon is present', () => {
