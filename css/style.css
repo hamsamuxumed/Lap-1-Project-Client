@@ -1,6 +1,11 @@
 :root {
     --light-grey: rgb(204 202 202);
     --blue: #2d9fd9;
+    --canvas: #DAE0E6;
+  }
+
+  body {
+    background-color: var(--canvas);
   }
   
 .noDisplay {
@@ -11,11 +16,18 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: lightgray;
+    background-color: white;
     width: 100%;
-    top: 0px;
+    top: 0;
     left: 0px;
     z-index: 10;
+    border: 1px solid var(--light-grey);
+    position: fixed;
+    
+}
+
+h3 {
+    margin: 0;
 }
 
 #logoSection {
@@ -52,6 +64,7 @@ nav {
     margin: 20px;
     border-radius: 4px;
     padding-left: 40px;
+    background-color: white;
 }
 
 .entryHeader {
@@ -84,14 +97,16 @@ nav {
 
 /* FORM ------------------------------------------------------- */
 .entryForm {
-    border: 1px solid black;
-    /* width: 53.5%; */
+    border: 1px solid var(--light-grey);
     margin-right: 400px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
+    align-content: center;
+    margin-left: 30px;
+    background-color: white;
+    margin-top: 40px;
 }
 
 .entryForm iframe {
@@ -115,6 +130,7 @@ nav {
     flex-direction: column;
     margin-left: 28%;
     width: 70%;
+  
 }
 
 #mainHeader {
@@ -125,20 +141,32 @@ nav {
 }
 
 #formTitle {
-    width: 70%;
+    
+    border: 1px solid var(--blue);
+    border-radius: 10px;
+    padding: 3px;
+    width: 90%;
     height: 20px;
-    margin-left: 13%;
+    margin-left: 6%;
 }
 
 #formMessage {
-    width: 70%;
-    margin-left: 13%;
+    
+    border: 1px solid var(--blue);
+    border-radius: 10px;
+    padding: 3px;
+    width: 90%;
+    margin-left: 6%;
 
 }
 #formGifSearch {
-    width: 70%;
+
+    border: 1px solid var(--blue);
+    border-radius: 10px;
+    padding: 3px;
+    width: 90%;
     height: 20px;
-    margin-left: 13%;
+    margin-left: 6%;
 }
 
 button {
@@ -152,7 +180,8 @@ button {
     line-height: 20px;
     padding: 10px 12px;
     transition: all 200ms;
-    /* background-color: var(--blue); */
+    background-color: var(--blue);
+    color: white;
 }
 
 .commentSectionButton {
@@ -221,4 +250,9 @@ input[type="text" i] {
 
 .formLabel {
 margin:10px;
+display: none;
+}
+
+a {
+    text-decoration: none;
 }
