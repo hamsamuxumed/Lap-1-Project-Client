@@ -23,7 +23,7 @@ async function submitEntry(e) {
 
     const response = await axios.post('https://caffeine-overflow-server.herokuapp.com/entries', body);
     let newEntry = createNewEntry(response.data);
-    const section = document.querySelector('#entrySection');
+    const section = document.querySelector('#appendNewEntryToHere');
     const dateButton = document.getElementById('sortByButton');
     if (dateButton.innerHTML === 'Most Recent') {
         section.prepend(newEntry);
