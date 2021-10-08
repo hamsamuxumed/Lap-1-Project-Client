@@ -32,7 +32,7 @@ postsSection.addEventListener('click', async (event) => {
         const happy = document.querySelector(`#happy-id${idNum}`)
         const love = document.querySelector(`#love-id${idNum}`)
         const angry = document.querySelector(`#angry-id${idNum}`)
-        const data = await axios.get(`http://localhost:2000/entries`);
+        const data = await axios.get(`https://caffeine-overflow-server.herokuapp.com/entries`);
         const dataArray = data.data
         const dataOfId = (dataArray[idNum - 1])
 
@@ -58,7 +58,7 @@ postsSection.addEventListener('click', async (event) => {
                 text: event.target.previousElementSibling.value,
                 author: "test username"
             }
-            const response = await axios.post(`http://localhost:3000/entries/comments/${idNumber}`, commentContent);
+            const response = await axios.post(`https://caffeine-overflow-server.herokuapp.com/entries/comments/${idNumber}`, commentContent);
 
             const newCommentsArticle = document.createElement('article');
             const newAuthor = document.createElement('h3');
@@ -87,7 +87,7 @@ postsSection.addEventListener('click', async (event) => {
     } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteEntryButton')) {
         const ID = event.target.id;
         const idNumber = ID.split("d")[2];
-        const response = await axios.delete(`http://localhost:2000/entries/delete/${idNumber}`, { data: { idNumber } });
+        const response = await axios.delete(`https://caffeine-overflow-server.herokuapp.com/entries/delete/${idNumber}`, { data: { idNumber } });
         const article = document.querySelector(`#entryArticle-id${idNumber}`);
         article.classList.add("noDisplay");
     } else if (event.target.nodeName === 'BUTTON' && event.target.classList.contains('deleteCommentButton')) {
@@ -95,14 +95,14 @@ postsSection.addEventListener('click', async (event) => {
         const entryIdNumber = entryId.split("d")[1]
         const commentId = event.target.id;
         const commentIdNumber = commentId.split("d")[2]
-        const response = await axios.delete(`http://localhost:2000/entries/comments/delete/${entryIdNumber}/${commentIdNumber}`, { data: { commentIdNumber } });
+        const response = await axios.delete(`https://caffeine-overflow-server.herokuapp.com/entries/comments/delete/${entryIdNumber}/${commentIdNumber}`, { data: { commentIdNumber } });
         const comment = document.querySelector(`#articleComment-id${commentIdNumber}`);
         comment.classList.add("noDisplay");
     };
 });
 
 window.addEventListener('load', async (e) => {
-    const data = await axios.get(`http://localhost:2000/entries`);
+    const data = await axios.get(`https://caffeine-overflow-server.herokuapp.com/entries`);
     const dataObject = data.data;
     const section = document.querySelector('#entrySection');
 
@@ -136,7 +136,7 @@ const createNewEntry = (entry) => {
     newHeader.classList.add('entryHeader')
     newUsername.classList.add('entryUsername')
     newDate.classList.add('entryDate')
-    newUsername.href = `http://localhost:3000/entries/${entry.username}`
+    newUsername.href = `https://caffeine-overflow-server.herokuapp.com/entries/${entry.username}`
     newUsername.append(entry.username)
     newDate.append(entry.date)
     newHeader.append(newUsername)
