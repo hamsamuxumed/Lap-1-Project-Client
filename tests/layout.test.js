@@ -14,7 +14,7 @@ describe('Head section', () => {
     test('It has a title', () => {
         let webTitle = document.querySelector('title');
         expect(webTitle).toBeTruthy();
-        expect(webTitle.textContent).toContain("JOURNALISTS 'R' US");
+        expect(webTitle.textContent).toContain('Caffeine Newswire');
     });
 
     test('Favicon is present', () => {
@@ -91,7 +91,7 @@ describe('Form', () => {
     });
 
     test('It has a header', () => {
-        let header = document.getElementById('main-header');
+        let header = document.getElementById('mainHeader');
         expect(header.textContent).toContain('Add your own News entry');
     });
 
