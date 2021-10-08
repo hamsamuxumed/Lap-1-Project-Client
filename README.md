@@ -4,9 +4,10 @@ Caffeine Newswire is a social networking, blogging website, where users can shar
 
 This README will guide you through how to setup the client side of the application and our experiences during this project.
 
-![image](https://) (Images of client side)
-![image](https://) (Images of client side)
-![image](https://) (Images of client side)
+![Image of form to post entry](https://user-images.githubusercontent.com/69541616/136547811-ccadb1ad-3ce1-4bee-b5f2-88b684d6bd2b.PNG)
+![Image of most recent entry](https://user-images.githubusercontent.com/69541616/136547851-347e8e11-2f9d-4554-8df1-de55229f60f0.PNG)
+![Image of most reacted entry](https://user-images.githubusercontent.com/69541616/136547771-0b6e0647-750a-49fa-b1f1-c00bd550ec6d.PNG)
+![Image of comment section](https://user-images.githubusercontent.com/69541616/136547718-8f189511-f5b4-490d-960b-cb2d774399a1.PNG)
 
 The repo for the server side of the application can be found [here](https://github.com/Forum-123/Lap-1-Project-Server). The server deployment can be accessed [here](https://caffeine-overflow-server.herokuapp.com/).
 
@@ -64,4 +65,5 @@ The repo for the server side of the application can be found [here](https://gith
 
 ## Bugs
 
-* Coverage of the client side testing does not display for each file
+* Coverage of the client side testing does not display for each file.
+* Some of the buttons on the website do not function as intended, such as the ability to add comments is not possible on some parts of the website.
