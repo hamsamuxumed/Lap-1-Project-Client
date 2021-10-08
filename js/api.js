@@ -21,7 +21,7 @@ async function submitEntry(e) {
         gifUrl: gifUrl
     };
 
-    const response = await axios.post('http://localhost:3000/entries', body);
+    const response = await axios.post('https://caffeine-overflow-server.herokuapp.com/entries', body);
     let newEntry = createNewEntry(response.data);
     const section = document.querySelector('#entrySection');
     const dateButton = document.getElementById('sortByButton');
