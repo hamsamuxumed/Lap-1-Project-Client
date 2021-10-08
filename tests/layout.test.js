@@ -75,7 +75,7 @@ describe('Navigation Bar', () => {
     });
 
     test('It has a title', () => {
-        let webTitle = document.querySelector('h5');
+        let webTitle = document.querySelector('h3');
         expect(webTitle).toBeTruthy();
     });
 
