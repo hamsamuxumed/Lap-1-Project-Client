@@ -104,7 +104,7 @@ postsSection.addEventListener('click', async (event) => {
 window.addEventListener('load', async (e) => {
     const data = await axios.get(`https://caffeine-overflow-server.herokuapp.com/entries`);
     const dataObject = data.data;
-    const section = document.querySelector('#entrySection');
+    const section = document.querySelector('#appendNewEntryToHere');
 
     dataObject.sort(function (a, b) {
         let dateA = new Date(a.date);
