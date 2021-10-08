@@ -91,7 +91,7 @@ describe('Form', () => {
     });
 
     test('It has a header', () => {
-        let header = document.getElementById('main-header');
+        let header = document.getElementById('mainHeader');
         expect(header.textContent).toContain('Add your own News entry');
     });
 
