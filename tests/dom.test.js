@@ -16,4 +16,6 @@ describe('DOM Manipulation', () => {
         // let entryCard = document.querySelector('.entryCard');
         // expect(entrySection).toContain(entryCard);
     });
+
+    // Test reaction count increases by one when clicked
 });
