@@ -58,7 +58,7 @@ postsSection.addEventListener('click', async (event) => {
                 text: event.target.previousElementSibling.value,
                 author: "test username"
             }
-            const response = await axios.post(`http://localhost:2000/entries/comments/${idNumber}`, commentContent);
+            const response = await axios.post(`http://localhost:3000/entries/comments/${idNumber}`, commentContent);
 
             const newCommentsArticle = document.createElement('article');
             const newAuthor = document.createElement('h3');
