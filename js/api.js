@@ -16,19 +16,18 @@ async function submitEntry(e) {
 
     const body = {
         title: e.target.parentElement[0].value,
-        username: "test username",
+        username: 'test username',
         message: e.target.parentElement[1].value,
         gifUrl: gifUrl
     };
 
     const response = await axios.post('http://localhost:3000/entries', body);
     let newEntry = createNewEntry(response.data);
-    console.log(body);
     const section = document.querySelector('#entrySection');
     const dateButton = document.getElementById('sortByButton');
-    if (dateButton.innerHTML === "Most Recent") {
+    if (dateButton.innerHTML === 'Most Recent') {
         section.prepend(newEntry);
-    } else if (dateButton.innerHTML === "Most Reacted To") {
+    } else if (dateButton.innerHTML === 'Most Reacted To') {
         section.append(newEntry);
     };
     const deleteButton = document.querySelector(`#deleteButton-id${response.data.id}`);

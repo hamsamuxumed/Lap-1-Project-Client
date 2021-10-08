@@ -58,7 +58,7 @@ postsSection.addEventListener('click', async (event) => {
                 text: event.target.previousElementSibling.value,
                 author: "test username"
             }
-            const response = await axios.post(`http://localhost:2000/entries/comments/${idNumber}`, commentContent);
+            const response = await axios.post(`http://localhost:3000/entries/comments/${idNumber}`, commentContent);
 
             const newCommentsArticle = document.createElement('article');
             const newAuthor = document.createElement('h3');
@@ -131,12 +131,12 @@ window.addEventListener('load', async (e) => {
 const createNewEntry = (entry) => {
     // create header
     const newHeader = document.createElement('header')
-    const newUsername = document.createElement('p')
+    const newUsername = document.createElement('a')
     const newDate = document.createElement('p')
     newHeader.classList.add('entryHeader')
     newUsername.classList.add('entryUsername')
     newDate.classList.add('entryDate')
-    newUsername.href = 'goes to page of just entries from that author'
+    newUsername.href = `http://localhost:3000/entries/${entry.username}`
     newUsername.append(entry.username)
     newDate.append(entry.date)
     newHeader.append(newUsername)
