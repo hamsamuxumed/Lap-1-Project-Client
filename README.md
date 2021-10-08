@@ -20,7 +20,7 @@ The repo for the server side of the application can be found [here](https://gith
 
 ### Usage
 
-* run `open index.html` in mac or `start index.html` on windows to open the file in your browser
+* Run `open index.html` in MacOS or `start index.html` on Windows to open the website in your default browser.
 
 ## Technologies
 
