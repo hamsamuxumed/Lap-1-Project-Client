@@ -32,6 +32,6 @@ async function submitEntry(e) {
     };
     const deleteButton = document.querySelector(`#deleteButton-id${response.data.id}`);
     deleteButton.classList.toggle('noDisplay');
-    const form = documnet.querySelector(".entryForm")
+    const form = document.querySelector(".entryForm")
     form.classList.toggle("noDisplay")
 };
