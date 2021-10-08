@@ -65,6 +65,7 @@ The repo for the server side of the application can be found [here](https://gith
 
 * Add user identification and log in features
 * Implement the ability to update posts and comments using PUT routes
+* Make the site mobile responsive.
 
 ## Bugs
 
